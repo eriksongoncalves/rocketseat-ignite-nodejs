@@ -4,7 +4,7 @@ class ListCategoriesUseCase {
   constructor(private categoryRepository: ICategoryRepository) {}
 
   execute() {
-    return this.categoryRepository.list;
+    return this.categoryRepository.list();
   }
 }
 
