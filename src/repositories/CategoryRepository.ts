@@ -1,11 +1,7 @@
 import Category from 'src/models/Category';
+import ICategoryRepository, { ICreateCategoryDTO } from './ICategoryRepository';
 
-interface ICreateCategoryDTO {
-  name: string;
-  description: string;
-}
-
-class CategoryRepository {
+class CategoryRepository implements ICategoryRepository {
   private categories: Category[];
 
   constructor() {
@@ -28,9 +24,8 @@ class CategoryRepository {
     return this.categories;
   }
 
-  findByName(name: string) {
-    const category = this.categories.find(cat => cat.name === name);
-    return category;
+  findByName(name: string): Category | undefined {
+    return this.categories.find(cat => cat.name === name);
   }
 }
 
