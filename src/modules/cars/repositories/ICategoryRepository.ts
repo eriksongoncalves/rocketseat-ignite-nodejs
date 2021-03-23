@@ -6,11 +6,11 @@ export interface ICreateCategoryDTO {
 }
 
 interface ICategoryRepository {
-  create({ name, description }: ICreateCategoryDTO): void;
+  create({ name, description }: ICreateCategoryDTO): Promise<void>;
 
-  list(): Category[];
+  list(): Promise<Category[]>;
 
-  findByName(name: string): Category | undefined;
+  findByName(name: string): Promise<Category | undefined>;
 }
 
 export default ICategoryRepository;
