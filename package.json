@@ -7,13 +7,18 @@
     "start": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "tsc",
     "lint": "eslint src --ext ts,tsx --max-warnings=0",
-    "prettier": "prettier --check '*/**/*.{ts,tsx}'"
+    "prettier": "prettier --check '*/**/*.{ts,tsx}'",
+    "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
+
   },
   "dependencies": {
     "csv-parse": "^4.15.3",
     "express": "^4.17.1",
     "multer": "^1.4.2",
+    "pg": "^8.5.1",
+    "reflect-metadata": "^0.1.13",
     "swagger-ui-express": "^4.1.6",
+    "typeorm": "^0.2.31",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
