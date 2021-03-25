@@ -13,5 +13,9 @@ yarn-error.log*
 
 
 tmp/*
+tmp/avatar/*
 !tmp/.git*
+!tmp/avatar/.git*
+!tmp/avatar
+
 
