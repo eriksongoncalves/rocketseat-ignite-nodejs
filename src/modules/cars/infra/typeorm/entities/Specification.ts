@@ -3,12 +3,6 @@ import { v4 as uuidV4 } from 'uuid';
 
 @Entity('specifications')
 class Specification {
-  constructor() {
-    if (!this.id) {
-      this.id = uuidV4();
-    }
-  }
-
   @PrimaryColumn()
   readonly id?: string;
 
@@ -20,6 +14,12 @@ class Specification {
 
   @CreateDateColumn()
   created_at: Date;
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuidV4();
+    }
+  }
 }
 
 export default Specification;

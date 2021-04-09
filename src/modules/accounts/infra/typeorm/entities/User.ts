@@ -9,12 +9,6 @@ import { v4 as uuidV4 } from 'uuid';
 
 @Entity('users')
 class User {
-  constructor() {
-    if (!this.id) {
-      this.id = uuidV4();
-    }
-  }
-
   @PrimaryColumn()
   readonly id: string;
 
@@ -41,6 +35,12 @@ class User {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  constructor() {
+    if (!this.id) {
+      this.id = uuidV4();
+    }
+  }
 }
 
 export default User;
