@@ -23,9 +23,13 @@ interface ICarRepository {
     category_id
   }: ICreateCarDTO): Promise<Car>;
 
-  list(): Promise<Car[]>;
-
   findByLicensePlate(license_plate: string): Promise<Car | undefined>;
+
+  findAvailable(
+    brand?: string,
+    category_id?: string,
+    name?: string
+  ): Promise<Car[]>;
 }
 
 export default ICarRepository;
