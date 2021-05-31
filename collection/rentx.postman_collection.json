@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "df12f0e3-2271-41cc-80bc-5ce10dc22294",
+		"name": "Ignite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sedan\",\n    \"description\": \"descrição da categoria\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}categories",
+							"host": [
+								"{{host}}categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}categories",
+							"host": [
+								"{{host}}categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/erikson/Downloads/arquivo.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}categories/import",
+							"host": [
+								"{{host}}categories"
+							],
+							"path": [
+								"import"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"User Teste\",\n    \"email\": \"teste@teste.com.br\",\n    \"password\": \"123456\",\n    \"driver_license\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}users",
+							"host": [
+								"{{host}}users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Avatar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/erikson/Downloads/bg-carro.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}users/avatar",
+							"host": [
+								"{{host}}users"
+							],
+							"path": [
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"token\", jsonData.data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"teste@teste.com.br\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}sessions",
+							"host": [
+								"{{host}}sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"token\", jsonData.data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@rentx.com.br\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}sessions",
+							"host": [
+								"{{host}}sessions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Specifications",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Especificação\",\n    \"description\": \"Descrição da especificação\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}specifications",
+							"host": [
+								"{{host}}specifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}specifications",
+							"host": [
+								"{{host}}specifications"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cars",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Audi A3\",\n    \"description\": \"description test\",\n    \"daily_rate\": 140.00,\n    \"license_plate\": \"AUD-1234\",\n    \"fine_amount\": 100,\n    \"brand\": \"Audi\",\n    \"category_id\": \"21bd318a-9568-4ed6-b310-d08909dddd06\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}cars",
+							"host": [
+								"{{host}}cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Available",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}cars/available?brand=Audi&category_id=21bd318a-9568-4ed6-b310-d08909dddd06&name=Audi A3",
+							"host": [
+								"{{host}}cars"
+							],
+							"path": [
+								"available"
+							],
+							"query": [
+								{
+									"key": "brand",
+									"value": "Audi"
+								},
+								{
+									"key": "category_id",
+									"value": "21bd318a-9568-4ed6-b310-d08909dddd06"
+								},
+								{
+									"key": "name",
+									"value": "Audi A3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/erikson/Downloads/arquivo.csv"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}categories/import",
+							"host": [
+								"{{host}}categories"
+							],
+							"path": [
+								"import"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
