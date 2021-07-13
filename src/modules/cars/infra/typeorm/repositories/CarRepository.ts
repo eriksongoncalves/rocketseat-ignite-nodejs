@@ -62,6 +62,10 @@ class CarRepository implements ICarRepository {
 
     return cars;
   }
+
+  async findById(id: string) {
+    return this.repository.findOne(id);
+  }
 }
 
 export default CarRepository;

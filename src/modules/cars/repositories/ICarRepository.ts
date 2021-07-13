@@ -30,6 +30,8 @@ interface ICarRepository {
     category_id?: string,
     name?: string
   ): Promise<Car[]>;
+
+  findById(carId: string): Promise<Car | undefined>;
 }
 
 export default ICarRepository;
